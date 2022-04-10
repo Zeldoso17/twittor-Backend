@@ -35,5 +35,5 @@ func ConnectionBD() *mongo.Client {
 func ConnectionStatus() bool{
 	err := MongoCN.Ping(context.TODO(), nil)
 
-	return err != nil
+	return err == nil
 }
