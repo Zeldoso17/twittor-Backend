@@ -12,7 +12,7 @@ func Register(w http.ResponseWriter, r *http.Request){
 	var t models.Usuario
 	err := json.NewDecoder(r.Body).Decode(&t) // We're reading the body of the request
 	if err != nil {
-		http.Error(w, "Something went wrong with the request body" + err.Error(), 400)
+		http.Error(w, "Algo fué mal con los datos del request" + err.Error(), 400)
 		return
 	}
 
