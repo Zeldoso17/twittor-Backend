@@ -14,9 +14,10 @@ import (
 func Managers(){
 	router := mux.NewRouter()
 
-	router.HandleFunc("registro", middlew.BDcheck(routers.Register)).Methods("POST")
-	router.HandleFunc("login", middlew.BDcheck(routers.Login)).Methods("POST")
-	//router.HandleFunc("/verperfil", middlew.BDcheck(middlew.ValidateJWT(routers.VerPerfil))).Methods("GET")
+	router.HandleFunc("/registro", middlew.BDcheck(routers.Register)).Methods("POST")
+	router.HandleFunc("/login", middlew.BDcheck(routers.Login)).Methods("POST")
+	router.HandleFunc("/verperfil", middlew.BDcheck(middlew.ValidateJWT(routers.ViewProfile))).Methods("GET")
+	router.HandleFunc("/modificarPerfil", middlew.BDcheck(middlew.ValidateJWT(routers.ModifyProfile))).Methods("PUT")
 
 	PORT := os.Getenv("PORT")
 	if PORT == "" {
