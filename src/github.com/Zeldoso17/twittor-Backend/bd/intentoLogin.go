@@ -6,7 +6,7 @@ import (
 )
 
 // LoginTry is a function that checks if the user is registered and if the password is correct
-func LoginTry(email string, password string) (models.Usuario, bool){
+func LoginTry(email string, password string) (models.Usuario, bool) {
 	user, found, _ := UserAlreadyExist(email)
 	if !found {
 		return user, found

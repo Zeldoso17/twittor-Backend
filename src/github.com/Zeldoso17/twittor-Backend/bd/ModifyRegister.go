@@ -3,13 +3,14 @@ package bd
 import (
 	"context"
 	"time"
+
 	"github.com/Zeldoso17/twittor-Backend/src/github.com/Zeldoso17/twittor-Backend/models"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
 // ModifyRegister is a function that modify a User Profile
-func ModifyRegister(u models.Usuario, ID string) (bool, error){
+func ModifyRegister(u models.Usuario, ID string) (bool, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
 	defer cancel()
 
@@ -33,9 +34,9 @@ func ModifyRegister(u models.Usuario, ID string) (bool, error){
 }
 
 // validations is a function that validates the register
-func validations(usu models.Usuario) (map[string]interface{}) {
+func validations(usu models.Usuario) map[string]interface{} {
 	registerValidations := make(map[string]interface{})
-	
+
 	if len(usu.Nombre) > 0 {
 		registerValidations["nombre"] = usu.Nombre
 	}
