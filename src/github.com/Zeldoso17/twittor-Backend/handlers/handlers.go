@@ -4,8 +4,8 @@ import (
 	"log"
 	"net/http"
 	"os"
-	"github.com/Zeldoso17/twittor-Backend/src/github.com/Zeldoso17/twittor-Backend/middlew"
-	"github.com/Zeldoso17/twittor-Backend/src/github.com/Zeldoso17/twittor-Backend/routers"
+	"github.com/Zeldoso17/twittor-Backend/middlew"
+	"github.com/Zeldoso17/twittor-Backend/routers"
 	"github.com/gorilla/mux"
 	"github.com/rs/cors"
 )

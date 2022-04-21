@@ -2,7 +2,7 @@ package routers
 
 import (
 	"net/http"
-	"github.com/Zeldoso17/twittor-Backend/src/github.com/Zeldoso17/twittor-Backend/bd"
+	"github.com/Zeldoso17/twittor-Backend/bd"
 )
 
 // DeleteTweet is a function that allows to delete a tweet

@@ -3,8 +3,8 @@ package routers
 import (
 	"encoding/json"
 	"net/http"
-	"github.com/Zeldoso17/twittor-Backend/src/github.com/Zeldoso17/twittor-Backend/bd"
-	"github.com/Zeldoso17/twittor-Backend/src/github.com/Zeldoso17/twittor-Backend/models"
+	"github.com/Zeldoso17/twittor-Backend/bd"
+	"github.com/Zeldoso17/twittor-Backend/models"
 )
 
 // Register is a function to create a new user in the database

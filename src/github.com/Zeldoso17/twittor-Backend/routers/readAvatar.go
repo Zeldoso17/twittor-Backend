@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/Zeldoso17/twittor-Backend/src/github.com/Zeldoso17/twittor-Backend/bd"
+	"github.com/Zeldoso17/twittor-Backend/bd"
 )
 
 // ReadAvatar is a funtion that allows to send the avatar to the fontend

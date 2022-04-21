@@ -2,7 +2,7 @@ package middlew
 
 import (
 	"net/http"
-	"github.com/Zeldoso17/twittor-Backend/src/github.com/Zeldoso17/twittor-Backend/routers"
+	"github.com/Zeldoso17/twittor-Backend/routers"
 )
 // ValidateJWT allows to validate the JWT token 
 func ValidateJWT(next http.HandlerFunc) http.HandlerFunc {

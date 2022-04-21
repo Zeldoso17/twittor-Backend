@@ -3,9 +3,10 @@ package routers
 import (
 	"errors"
 	"strings"
+
+	"github.com/Zeldoso17/twittor-Backend/bd"
+	"github.com/Zeldoso17/twittor-Backend/models"
 	jwt "github.com/dgrijalva/jwt-go"
-	"github.com/Zeldoso17/twittor-Backend/src/github.com/Zeldoso17/twittor-Backend/bd"
-	"github.com/Zeldoso17/twittor-Backend/src/github.com/Zeldoso17/twittor-Backend/models"
 )
 
 // Email is the value of the email that will use in whole EndPoints
@@ -15,7 +16,7 @@ var Email string
 var IDUser string
 
 // ProcessToken is a function that allows to extract its values
-func ProcessToken(tk string)(*models.Claim, bool, string, error){
+func ProcessToken(tk string) (*models.Claim, bool, string, error) {
 	privateKey := []byte("Cesun2022_cuatri9")
 	claims := &models.Claim{} // This is the struct that will be used to extract the values from the token
 

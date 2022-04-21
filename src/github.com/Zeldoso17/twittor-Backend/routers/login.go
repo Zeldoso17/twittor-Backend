@@ -3,9 +3,9 @@ package routers
 import (
 	"encoding/json"
 	"net/http"
-	"github.com/Zeldoso17/twittor-Backend/src/github.com/Zeldoso17/twittor-Backend/bd"
-	"github.com/Zeldoso17/twittor-Backend/src/github.com/Zeldoso17/twittor-Backend/jwt"
-	"github.com/Zeldoso17/twittor-Backend/src/github.com/Zeldoso17/twittor-Backend/models"
+	"github.com/Zeldoso17/twittor-Backend/bd"
+	"github.com/Zeldoso17/twittor-Backend/jwt"
+	"github.com/Zeldoso17/twittor-Backend/models"
 )
 // Login is a function that handles the login process
 func Login(w http.ResponseWriter, r *http.Request){

@@ -3,7 +3,7 @@ package jwt
 import (
 	"time"
 	jwt "github.com/dgrijalva/jwt-go" // We create a alias for the package jwt-go
-	"github.com/Zeldoso17/twittor-Backend/src/github.com/Zeldoso17/twittor-Backend/models"
+	"github.com/Zeldoso17/twittor-Backend/models"
 )
 
 // GenerateJWT is a function that generates the JWT

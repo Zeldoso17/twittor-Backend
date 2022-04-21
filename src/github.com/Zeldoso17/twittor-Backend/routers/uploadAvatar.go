@@ -6,8 +6,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/Zeldoso17/twittor-Backend/src/github.com/Zeldoso17/twittor-Backend/bd"
-	"github.com/Zeldoso17/twittor-Backend/src/github.com/Zeldoso17/twittor-Backend/models"
+	"github.com/Zeldoso17/twittor-Backend/bd"
+	"github.com/Zeldoso17/twittor-Backend/models"
 )
 
 // UploadAvatar is a function that allows to upload an avatar

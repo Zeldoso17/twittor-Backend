@@ -3,8 +3,8 @@ package routers
 import (
 	"encoding/json"
 	"net/http"
-	"github.com/Zeldoso17/twittor-Backend/src/github.com/Zeldoso17/twittor-Backend/bd"
-	"github.com/Zeldoso17/twittor-Backend/src/github.com/Zeldoso17/twittor-Backend/models"
+	"github.com/Zeldoso17/twittor-Backend/bd"
+	"github.com/Zeldoso17/twittor-Backend/models"
 )
 
 // ModifyProfile is a function that modify a User Profile

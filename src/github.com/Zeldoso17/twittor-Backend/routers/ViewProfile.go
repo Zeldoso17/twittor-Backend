@@ -3,7 +3,7 @@ package routers
 import (
 	"encoding/json"
 	"net/http"
-	"github.com/Zeldoso17/twittor-Backend/src/github.com/Zeldoso17/twittor-Backend/bd"
+	"github.com/Zeldoso17/twittor-Backend/bd"
 )
 
 // ViewProfile is a function that allows to obtain the profile of a user
