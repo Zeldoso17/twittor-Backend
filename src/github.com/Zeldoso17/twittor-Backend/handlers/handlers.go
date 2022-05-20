@@ -21,6 +21,8 @@ func Managers(){
 	router.HandleFunc("/crearTweet", middlew.BDcheck(middlew.ValidateJWT(routers.CreateTweet))).Methods("POST")
 	router.HandleFunc("/leerTweets", middlew.BDcheck(middlew.ValidateJWT(routers.ReadTweets))).Methods("GET")
 	router.HandleFunc("/eliminarTweet", middlew.BDcheck(middlew.ValidateJWT(routers.DeleteTweets))).Methods("DELETE")
+	router.HandleFunc("/crearComentario/{IDTweet}", middlew.BDcheck(middlew.ValidateJWT(routers.CreateComment))).Methods("POST")
+	router.HandleFunc("/leerComentarios/{IDTweet}", middlew.BDcheck(middlew.ValidateJWT(routers.ReadComments))).Methods("GET")
 
 	router.HandleFunc("/subirAvatar", middlew.BDcheck(middlew.ValidateJWT(routers.UploadAvatar))).Methods("POST")
 	router.HandleFunc("/obtenerAvatar", middlew.BDcheck(routers.ReadAvatar)).Methods("GET")

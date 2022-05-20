@@ -13,7 +13,7 @@ import (
 // UploadAvatar is a function that allows to upload an banner
 func UploadBanner(w http.ResponseWriter, r *http.Request) {
 
-	file, handler, err := r.FormFile("banner")
+	file, handler, _ := r.FormFile("banner")
 	var extension = strings.Split(handler.Filename, ".")[1]
 	var archivo string = "uploads/banners/" + IDUser + "." + extension
 
@@ -34,7 +34,7 @@ func UploadBanner(w http.ResponseWriter, r *http.Request) {
 
 	usuario.Banner = IDUser+ "." + extension
 	status, err = bd.ModifyRegister(usuario, IDUser)
-	if err != nil || status == false {
+	if err != nil || !status {
 		http.Error(w, "Error al grabar el banner en la BD ! "+err.Error(), http.StatusBadRequest)
 		return
 	}
