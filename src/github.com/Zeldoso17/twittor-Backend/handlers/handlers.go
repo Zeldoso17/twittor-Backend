@@ -4,6 +4,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+
 	"github.com/Zeldoso17/twittor-Backend/middlew"
 	"github.com/Zeldoso17/twittor-Backend/routers"
 	"github.com/gorilla/mux"
@@ -11,7 +12,7 @@ import (
 )
 
 /* Here I'm setting mi port and i'm listening to my server */
-func Managers(){
+func Managers() {
 	router := mux.NewRouter()
 
 	router.HandleFunc("/registro", middlew.BDcheck(routers.Register)).Methods("POST")
@@ -21,8 +22,10 @@ func Managers(){
 	router.HandleFunc("/crearTweet", middlew.BDcheck(middlew.ValidateJWT(routers.CreateTweet))).Methods("POST")
 	router.HandleFunc("/leerTweets", middlew.BDcheck(middlew.ValidateJWT(routers.ReadTweets))).Methods("GET")
 	router.HandleFunc("/eliminarTweet", middlew.BDcheck(middlew.ValidateJWT(routers.DeleteTweets))).Methods("DELETE")
+
 	router.HandleFunc("/crearComentario/{IDTweet}", middlew.BDcheck(middlew.ValidateJWT(routers.CreateComment))).Methods("POST")
 	router.HandleFunc("/leerComentarios/{IDTweet}", middlew.BDcheck(middlew.ValidateJWT(routers.ReadComments))).Methods("GET")
+	router.HandleFunc("/darLike/{IDTweet}", middlew.BDcheck(middlew.ValidateJWT(routers.GiveLike))).Methods("POST")
 
 	router.HandleFunc("/subirAvatar", middlew.BDcheck(middlew.ValidateJWT(routers.UploadAvatar))).Methods("POST")
 	router.HandleFunc("/obtenerAvatar", middlew.BDcheck(routers.ReadAvatar)).Methods("GET")
@@ -45,4 +48,3 @@ func Managers(){
 	log.Fatal(http.ListenAndServe(":"+PORT, handler))
 
 }
-
