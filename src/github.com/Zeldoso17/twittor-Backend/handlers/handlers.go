@@ -19,13 +19,16 @@ func Managers() {
 	router.HandleFunc("/login", middlew.BDcheck(routers.Login)).Methods("POST")
 	router.HandleFunc("/verperfil", middlew.BDcheck(middlew.ValidateJWT(routers.ViewProfile))).Methods("GET")
 	router.HandleFunc("/modificarPerfil", middlew.BDcheck(middlew.ValidateJWT(routers.ModifyProfile))).Methods("PUT")
+	
 	router.HandleFunc("/crearTweet", middlew.BDcheck(middlew.ValidateJWT(routers.CreateTweet))).Methods("POST")
 	router.HandleFunc("/leerTweets", middlew.BDcheck(middlew.ValidateJWT(routers.ReadTweets))).Methods("GET")
 	router.HandleFunc("/eliminarTweet", middlew.BDcheck(middlew.ValidateJWT(routers.DeleteTweets))).Methods("DELETE")
 
 	router.HandleFunc("/crearComentario/{IDTweet}", middlew.BDcheck(middlew.ValidateJWT(routers.CreateComment))).Methods("POST")
 	router.HandleFunc("/leerComentarios/{IDTweet}", middlew.BDcheck(middlew.ValidateJWT(routers.ReadComments))).Methods("GET")
+
 	router.HandleFunc("/darLike/{IDTweet}", middlew.BDcheck(middlew.ValidateJWT(routers.GiveLike))).Methods("POST")
+	router.HandleFunc("/leerLike/{IDTweet}", middlew.BDcheck(middlew.ValidateJWT(routers.ReadLike))).Methods("GET")
 
 	router.HandleFunc("/subirAvatar", middlew.BDcheck(middlew.ValidateJWT(routers.UploadAvatar))).Methods("POST")
 	router.HandleFunc("/obtenerAvatar", middlew.BDcheck(routers.ReadAvatar)).Methods("GET")
