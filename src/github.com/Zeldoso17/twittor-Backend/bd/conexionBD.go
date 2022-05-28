@@ -32,7 +32,7 @@ func ConnectionBD() *mongo.Client {
 }
 
 /* ConnectionStatus is the function to allows me to check the Connection Status */
-func ConnectionStatus() bool{
+func ConnectionStatus() bool {
 	err := MongoCN.Ping(context.TODO(), nil)
 
 	return err == nil
