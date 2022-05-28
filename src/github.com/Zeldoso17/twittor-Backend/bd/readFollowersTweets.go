@@ -34,9 +34,9 @@ func ReadFollowersTweet(ID string, pagina int) ([]*models.ReturnFollowersTweets,
 	conditions = append(conditions, bson.M{"$skip": skip}) // Here we are using the $skip operator to skip the documents
 	conditions = append(conditions, bson.M{"$limit": 20}) // Here we are using the $limit operator to limit the documents
 
-	cursor, err := col.Aggregate(ctx, conditions) // Here we are using the Aggregate function to execute the query
+	cursor, _ := col.Aggregate(ctx, conditions) // Here we are using the Aggregate function to execute the query
 	var results []*models.ReturnFollowersTweets
-	err = cursor.All(ctx, &results) // Here we are using the All function to decode the documents in the cursor into the results variable
+	err := cursor.All(ctx, &results) // Here we are using the All function to decode the documents in the cursor into the results variable
 	if err != nil {
 		fmt.Println(err.Error())
 		return results, false
