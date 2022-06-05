@@ -17,7 +17,7 @@ func ReadComments(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	comments, status := bd.ReadComments(IDTweet)
+	comments, status, _ := bd.ReadComments(IDTweet)
 	if !status {
 		http.Error(w, "Error al leer los comentarios", http.StatusBadRequest)
 		return

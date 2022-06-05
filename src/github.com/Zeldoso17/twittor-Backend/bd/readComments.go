@@ -9,7 +9,7 @@ import (
 	"go.mongodb.org/mongo-driver/bson"
 )
 
-func ReadComments(idtweet string) ([]*models.ReturnComments, bool) {
+func ReadComments(idtweet string) ([]*models.ReturnComments, bool, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
 	defer cancel()
 
@@ -25,16 +25,16 @@ func ReadComments(idtweet string) ([]*models.ReturnComments, bool) {
 	cursor, err := col.Find(ctx, condition)
 	if err != nil {
 		log.Fatal(err.Error())
-		return results, false
+		return results, false, err
 	}
 
 	for cursor.Next(context.TODO()) {
 		var register models.ReturnComments
 		err := cursor.Decode(&register) // Here we decode the tweet into the register variable
 		if err != nil {
-			return results, false
+			return results, false, err
 		}
 		results = append(results, &register)
 	}
-	return results, true
+	return results, true, nil
 }

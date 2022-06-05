@@ -2,18 +2,23 @@ package routers
 
 import (
 	"net/http"
+	"github.com/gorilla/mux"
+
 	"github.com/Zeldoso17/twittor-Backend/bd"
 )
 
 // DeleteTweet is a function that allows to delete a tweet
 func DeleteTweets(w http.ResponseWriter, r *http.Request){
-	ID := r.URL.Query().Get("id") // Here we get the id of the tweet from the url
-	if len(ID) < 1 {
+	vars := mux .Vars(r) 
+
+	IDTweet := vars["IDTweet"]
+
+	if len(IDTweet) < 1 {
 		http.Error(w, "El parámetro ID es obligatorio", http.StatusBadRequest)
 		return
 	}
 
-	err := bd.DeleteTweet(ID, IDUser) // Here we delete the tweet
+	err := bd.DeleteTweet(IDTweet, IDUser) // Here we delete the tweet
 	if err != nil {
 		http.Error(w, "Error al intentar borrar el tweet "+err.Error(), http.StatusBadRequest)
 		return

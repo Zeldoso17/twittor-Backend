@@ -7,6 +7,8 @@ import (
 
 	"github.com/Zeldoso17/twittor-Backend/middlew"
 	"github.com/Zeldoso17/twittor-Backend/routers"
+	"github.com/gofiber/fiber/v2"
+	CORS "github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gorilla/mux"
 	"github.com/rs/cors"
 )
@@ -14,6 +16,8 @@ import (
 /* Here I'm setting mi port and i'm listening to my server */
 func Managers() {
 	router := mux.NewRouter()
+	app := fiber.New()
+	app.Use(CORS.New())
 
 	router.HandleFunc("/registro", middlew.BDcheck(routers.Register)).Methods("POST")
 	router.HandleFunc("/login", middlew.BDcheck(routers.Login)).Methods("POST")
@@ -22,10 +26,12 @@ func Managers() {
 	
 	router.HandleFunc("/crearTweet", middlew.BDcheck(middlew.ValidateJWT(routers.CreateTweet))).Methods("POST")
 	router.HandleFunc("/leerTweets", middlew.BDcheck(middlew.ValidateJWT(routers.ReadTweets))).Methods("GET")
-	router.HandleFunc("/eliminarTweet", middlew.BDcheck(middlew.ValidateJWT(routers.DeleteTweets))).Methods("DELETE")
+	router.HandleFunc("/eliminarTweet/{IDTweet}", middlew.BDcheck(middlew.ValidateJWT(routers.DeleteTweets))).Methods("DELETE")
 
 	router.HandleFunc("/crearComentario/{IDTweet}", middlew.BDcheck(middlew.ValidateJWT(routers.CreateComment))).Methods("POST")
 	router.HandleFunc("/leerComentarios/{IDTweet}", middlew.BDcheck(middlew.ValidateJWT(routers.ReadComments))).Methods("GET")
+	router.HandleFunc("/editarComentario/{IDComment}", middlew.BDcheck(middlew.ValidateJWT(routers.ModifyComment))).Methods("PUT")
+	router.HandleFunc("/eliminarComentario/{IDComment}", middlew.BDcheck(middlew.ValidateJWT(routers.DeleteComment))).Methods("DELETE")
 
 	router.HandleFunc("/darLike/{IDTweet}", middlew.BDcheck(middlew.ValidateJWT(routers.GiveLike))).Methods("POST")
 	router.HandleFunc("/leerLike/{IDTweet}", middlew.BDcheck(middlew.ValidateJWT(routers.ReadLike))).Methods("GET")
@@ -46,7 +52,7 @@ func Managers() {
 	if PORT == "" {
 		PORT = "8080"
 	}
-
+	//app.Listen(":"+PORT)
 	handler := cors.AllowAll().Handler(router)
 	log.Fatal(http.ListenAndServe(":"+PORT, handler))
 
