@@ -32,6 +32,7 @@ func Managers() {
 	router.HandleFunc("/leerComentarios/{IDTweet}", middlew.BDcheck(middlew.ValidateJWT(routers.ReadComments))).Methods("GET")
 	router.HandleFunc("/editarComentario/{IDComment}", middlew.BDcheck(middlew.ValidateJWT(routers.ModifyComment))).Methods("PUT")
 	router.HandleFunc("/eliminarComentario/{IDComment}", middlew.BDcheck(middlew.ValidateJWT(routers.DeleteComment))).Methods("DELETE")
+	router.HandleFunc("/eliminarComentario/{IDComment}/{IDTweet}", middlew.BDcheck(middlew.ValidateJWT(routers.DeleteComment2))).Methods("DELETE")
 
 	router.HandleFunc("/darLike/{IDTweet}", middlew.BDcheck(middlew.ValidateJWT(routers.GiveLike))).Methods("POST")
 	router.HandleFunc("/leerLike/{IDTweet}", middlew.BDcheck(middlew.ValidateJWT(routers.ReadLike))).Methods("GET")
